@@ -1,0 +1,69 @@
+7.
+	Given a string s, sort it in ascending  order  and find the starting index of repeated character 
+Input: s = "tree"
+Output: "eert", starting index 0
+Input: s = "kkj"
+Output: "jkk", starting index : 1
+Example 2:
+Input: s = "cccaaa"
+Output: "aaaccc", starting index 0,3
+Example 3:
+Input: s = "Aabb"
+Output: "bbAa",starting index 0,2
+
+code :
+
+#include <stdio.h>
+#include <string.h>
+void sortString(char* s) {
+    int n = strlen(s);
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (s[j] > s[j + 1]) {
+                char temp = s[j];
+                s[j] = s[j + 1];
+                s[j + 1] = temp;
+            }
+        }
+    }
+}
+void findStartingIndex(char* s) {
+    int n = strlen(s);
+    int index = 0;
+    for (int i = 0; i < n - 1; i++) {
+        if (s[i] == s[i + 1]) {
+            index = i;
+            break;
+        }
+    }
+    printf("Sorted String: %s\n", s);
+    printf("Starting Index of Repeated Character: %d\n", index);
+}
+int main() {
+    char s1[] = "tree";
+    sortString(s1);
+    findStartingIndex(s1);
+    char s2[] = "kkj";
+    sortString(s2);
+    findStartingIndex(s2);
+    char s3[] = "cccaaa";
+    sortString(s3);
+    findStartingIndex(s3);
+    char s4[] = "Aabb";
+    sortString(s4);
+    findStartingIndex(s4);
+    return 0;
+}
+
+
+output :
+
+Starting Index of Repeated Character: 2
+
+
+
+
+
+
+
+
